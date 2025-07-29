@@ -18,4 +18,4 @@ class Cliente:
         return self.__nome
 
     def __str__(self):
-        return 'Nome:' + self.__nome + ' CPF:' + self.__cpf
+        return 'Código:' + self.__codigo + 'Nome:' + self.__nome + ' CPF:' + self.__cpf

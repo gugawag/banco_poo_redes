@@ -1,6 +1,5 @@
 from cliente import Cliente
 
-
 class Conta:
 
     # saldo, numero, cliente
@@ -13,12 +12,6 @@ class Conta:
     def saldo(self):
         return self.__saldo
 
-    @saldo.setter
-    def saldo(self, novo_saldo):
-        if novo_saldo < 0:
-            raise ValueError('Não permitido saldo negativo!')
-        self.__saldo = novo_saldo
-
     @property
     def numero(self):
         return self.__numero
@@ -30,3 +23,30 @@ class Conta:
     @property
     def cliente(self):
         return self.__cliente
+
+    def creditar(self, valor):
+        self.__validar_valor_negativo(valor)
+        self.__saldo += valor
+
+    def debitar(self, valor):
+        self.__validar_valor_negativo(valor)
+        self.__saldo -= valor
+
+    def __validar_valor_negativo(self, valor):
+        if valor < 0:
+            raise ValueError('Valor negativo!')
+
+    def transferir(self, destino, valor):
+        self.debitar(valor)
+        destino.creditar(valor)
+
+
+
+
+
+
+
+
+
+
+
